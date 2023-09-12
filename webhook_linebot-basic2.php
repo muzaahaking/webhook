@@ -6,12 +6,21 @@ $request = file_get_contents('php://input');
 $request_json = json_decode($request, true);
 
 foreach ($request_json['events'] as $event) {
-    $reply_message = 'ฉันได้รับ Event "'.$event['type'].'" ของคุณแล้ว!';
-
-    if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
-        $text = $event['message']['text'];
-        $reply_message = 'ฉันได้รับข้อความ "'.$text.'" ของคุณแล้ว!';
-    }
+    if ($event['type'] == 'message') 
+	{
+		if($event['message']['type'] == 'text')
+		{
+			$text = $event['message']['text'];
+			
+			$reply_message = 'ฉันได้รับข้อความ "'. $text.'" ของคุณแล้ว!'; 
+			
+		} else {
+			$reply_message = 'ฉันได้รับ "'.$event['message']['type'].'" ของคุณแล้ว!';
+		}
+		
+	} else {
+		$reply_message = 'ฉันได้รับ Event "'.$event['type'].'" ของคุณแล้ว!';
+	}
 
     reply_message($event['replyToken'],$reply_message);
 }
