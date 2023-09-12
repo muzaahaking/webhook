@@ -1,7 +1,7 @@
 <?php
 
 $channelAccessToken = '5EThX6Vk3J1vG2loJYE3sBL+2RIPhStAsGNsWl60p+5OUJxMArXpnRTdY42INPSRBzLQ+YMi3ZYGQ9IYMQ7xUxzJ5sP91Tl9mxn8sndw6wucWSKupVtPQeJqU3rn/HrAqGqllTSVAc/2awUFwsrHIgdB04t89/1O/w1cDnyilFU=';
-$gas_url = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec'; // Replace with your actual GAS web app URL
+$gas_url = 'https://script.google.com/macros/s/AKfycbyVFLNU1NR0ijGnc9m8vOCL94E37-BifbTGPEGoVV4iW81XbvN53Fq72PJGJfUrU0HY/exec'; // Replace with your actual GAS web app URL
 
 $request = file_get_contents('php://input');
 $request_json = json_decode($request, true);
