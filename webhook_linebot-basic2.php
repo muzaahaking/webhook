@@ -13,14 +13,14 @@ foreach ($request_json['events'] as $event) {
         $reply_message = 'ฉันได้รับข้อความ "'.$text.'" ของคุณแล้ว!';
     }
 
-    reply_message($reply_message);
+    reply_message($event['replyToken'],$reply_message);
 }
 
-function reply_message($reply_message) {
+function reply_message($replyToken,$reply_message) {
     global $channelAccessToken;
     $url = 'https://api.line.me/v2/bot/message/reply';
 
-    $data = ['replyToken' => $event['replyToken'], 'messages' => [['type' => 'text', 'text' => $reply_message]]];
+    $data = ['replyToken' => $replyToken, 'messages' => [['type' => 'text', 'text' => $reply_message]]];
     $post_body = json_encode($data);
 
     $post_header = ['Content-Type: application/json', 'Authorization: Bearer ' . $channelAccessToken];
